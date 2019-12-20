@@ -1,0 +1,60 @@
+name: "WorldWhitelister"
+prefix: "World Whitelister"
+version: 1.0.0
+author: Brian_Entei
+description: Basic world whitelisting support
+load: STARTUP
+loadBefore: []
+depend: []
+softdepend: []
+api-version: 1.14
+
+main: com.gmail.br45entei.worldWhitelister.main.Main
+
+commands:
+  worldList:
+    description: "Whitelist or Blacklist a player for a specified world."
+    usage: "/worldList {whitelist|blacklist} {add|remove} {playerName} {world name ...}"
+    aliases: [wl]
+  
+
+permissions:
+  worldwhitelist.*:
+    children:
+      worldwhitelist.use:
+        description: "Allows you to use the /worldList command."
+        default: op
+        children:
+          worldwhitelist.use.*:
+            description: "Allows you to add/remove players to/from any list for a specified world."
+            default: op
+            children:
+              worldwhitelist.use.whitelist:
+                description: "Allows you to add/remove players to/from a whitelist for a specified world."
+                default: op
+              worldwhitelist.use.blacklist:
+                description: "Allows you to add/remove players to/from a blacklist for a specified world."
+                default: op
+              
+            
+          
+        
+      
+      worldwhitelist.bypass.*:
+        description: "Allows you to bypass list restrictions for any world."
+        default: op
+        children:
+          worldwhitelist.bypass.world:
+            description: "Allows you to bypass list restrictions for a specific world."
+            default: op
+          worldwhitelist.bypass.world_nether:
+            description: "Allows you to bypass list restrictions for a specific world."
+            default: false
+          worldwhitelist.bypass.world_the_end:
+            description: "Allows you to bypass list restrictions for a specific world."
+            default: false
+          
+        
+      
+    
+  
